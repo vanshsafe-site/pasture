@@ -19,11 +19,11 @@ The Administrator page lists account email addresses and recent sign-in times. I
 ## Deploy with GitHub and Vercel
 
 1. Push this repository to GitHub.
-2. In Vercel, import the GitHub repository. Vercel detects Vite; `vercel.json` sets the build command and `dist` output directory.
+2. In Vercel, import the GitHub repository. Vercel detects Vite; `vercel.json` sets the build command, `npm install` install command, and `dist` output directory. Keep `package-lock.json` in the repository so installs resolve to the pinned dependency tree.
 3. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel project's Environment Variables for Preview and Production.
 4. Redeploy after adding environment variables.
 
-You can also run `npm run build` locally. The generated site is in `dist/`.
+You can run `npm test` and `npm run build` locally. The generated site is in `dist/`.
 
 ## Current scope
 

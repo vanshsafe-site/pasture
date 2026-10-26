@@ -30,7 +30,9 @@ export function createDemo() {
 export function loadDemo(storage) {
   const raw = storage.getItem(DEMO_STORAGE_KEY)
   if (!raw) return createDemo()
-  const saved = JSON.parse(raw)
+  let saved
+  try { saved = JSON.parse(raw) }
+  catch { throw new Error('Demo data could not be loaded. Reset the demo to restore the sample farm.') }
   if (saved.schema !== 1 || !saved.settings || !saved.data || !tables.every(table => Array.isArray(saved.data[table]))) throw new Error('Demo data could not be loaded. Reset the demo to restore the sample farm.')
   // A locally edited demo profile can never become a real administrator.
   return { ...saved, profile: { ...saved.profile, ...DEMO_USER, role: 'user' } }
